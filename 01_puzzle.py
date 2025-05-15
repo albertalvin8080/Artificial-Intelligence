@@ -2,7 +2,7 @@ from collections import deque
 
 MATRIX_DIMS = 3 # 3x3
 
-def isObjective(state, goal_state):
+def is_objective(state, goal_state):
     return state == goal_state
 
 def create_children_and_add_to_list(state, move_count, queue):
@@ -28,8 +28,8 @@ def create_children_and_add_to_list(state, move_count, queue):
 
 def puzzle(initial_state, goal_state):
     found = False
-    # (state, move_count)
     # It's BFS because it's a queue, not a stack (DFS).
+    # (state, move_count)
     nodeQueue = deque([(initial_state, 0)])
     dictVisited = dict()
 
@@ -37,7 +37,7 @@ def puzzle(initial_state, goal_state):
         node, moves = nodeQueue.popleft()
         if node not in dictVisited:
             dictVisited[node] = True
-            if isObjective(node, goal_state):
+            if is_objective(node, goal_state):
                 found = True
                 # continue
             else:
@@ -59,12 +59,12 @@ if __name__ == "__main__":
     initial_states = [
         (4, 6, 2, 8, 1, 3, 7, 5, 0),
         (6, 4, 2, 8, 1, 3, 7, 5, 0),
-        (0, 1, 2, 3, 4, 5, 6, 7, 8),
+        (1, 2, 3, 4, 5, 6, 7, 8, 0),
         (7, 5, 4, 1, 0, 3, 2, 6, 8),
     ]
-    goal_state = (1, 2, 3, 
-                  4, 5, 6, 
-                  7, 8, 0)
+    goal_state = (0, 1, 2, 
+                  3, 4, 5, 
+                  6, 7, 8)
     for state in initial_states:
         puzzle(state, goal_state)
     
