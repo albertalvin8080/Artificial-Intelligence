@@ -10,6 +10,10 @@ def create_children_and_add_to_list(state, move_count, queue):
     # divmod returns a tuple containing the quotient and remainder when dividing a by b.
     row, col = divmod(index, MATRIX_DIMS)
     
+    # NOTE: 
+    # >> When the empty tile is at the center, it will have 4 children (nodes).
+    # >> When it's a the center borders, it will have 3 children.
+    # >> When it's at the corners, it will have 2 children.
     directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
     
     for dr, dc in directions:
