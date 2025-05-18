@@ -1,0 +1,10 @@
+[package]
+name = "_02_queens"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+[[bin]]
+name = "_02_queens"
+path = "main.rs"

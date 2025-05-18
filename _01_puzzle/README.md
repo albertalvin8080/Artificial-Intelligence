@@ -2,11 +2,7 @@
 
 ## Used Thecnique
 ### Breadth First Search (BFS) with pruning of already evaluated states.
-![alt text](images/01_puzzle/deque.png)
-<br>
-**...**
-<br>
-![alt text](images/01_puzzle/popleft_and_prune.png)
+![alt text](images/deque.png)
 
 ## Initial States
 ```python
@@ -46,7 +42,7 @@
 ```
 
 ## Objective Test
-![alt text](images/01_puzzle/test_objective.png)
+![alt text](images/test_objective.png)
 
 ## Set of Operations
 - Move the empty tile (0) in one of four possible directions:
@@ -66,10 +62,10 @@
 - (0, +1) -> Avançar uma coluna
 
 ### Generating Children
-![alt text](images/01_puzzle/directions_application.png)
+![alt text](images/directions_application.png)
 
 ## Results
-![unsolvable](images/01_puzzle/unsolvable.png)
-![solvable_01](images/01_puzzle/solvable_01.png)
-![solvable_02](images/01_puzzle/solvable_02.png)
-![solvable_03](images/01_puzzle/solvable_03.png)
+![unsolvable](images/unsolvable.png)
+![solvable_01](images/solvable_01.png)
+![solvable_02](images/solvable_02.png)
+![solvable_03](images/solvable_03.png)

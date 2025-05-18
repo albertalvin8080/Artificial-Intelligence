@@ -69,6 +69,7 @@ JPA_Hibernate/first-test/mysql-data/
 # C/*.exe
 **/*.exe
 **/*.pdb
+**/Cargo.lock
 
 **/node_modules/
 

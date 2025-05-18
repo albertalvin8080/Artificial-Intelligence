@@ -1,0 +1,10 @@
+[package]
+name = "_01_puzzle"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+[[bin]]
+name = "_01_puzzle"
+path = "main.rs"
