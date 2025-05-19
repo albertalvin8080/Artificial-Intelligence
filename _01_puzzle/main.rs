@@ -42,7 +42,6 @@ fn create_children_and_add_to_queue(
     }
 }
 
-// Solves the puzzle using Breadth-First Search
 fn puzzle(initial_state: &[u8], goal_state: &[u8]) {
     let mut found = false;
 

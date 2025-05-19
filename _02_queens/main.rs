@@ -44,14 +44,14 @@ fn eight_queens(initial_state: &[usize]) {
     validate_initial_state(initial_state);
 
     let mut found = false;
-    // (queens), (how many queens are there)
-    let mut stack = vec![(initial_state.to_vec(), initial_state.len())];
+    let mut stack = vec![initial_state.to_vec()];
     let mut nodes_created = 0;
 
     let mut solution = Vec::new();
 
-    while let Some((state, row)) = stack.pop() {
+    while let Some(state) = stack.pop() {
         nodes_created += 1;
+        let row = state.len();
 
         if row == BOARD_SIZE {
             found = true;
@@ -59,12 +59,12 @@ fn eight_queens(initial_state: &[usize]) {
             break; // found one solution
         }
 
-        // NOTE: reverse for "left-to-right"
+        // NOTE: reverse for left-to-right
         for col in (0..BOARD_SIZE).rev() {
-            if is_safe(&state, row, col) {
-                let mut new_state = state.to_vec();
+            if is_safe(state.as_slice(), row, col) {
+                let mut new_state = state.clone();
                 new_state.push(col);
-                stack.push((new_state, row + 1));
+                stack.push(new_state);
             }
         }
     }
@@ -73,22 +73,21 @@ fn eight_queens(initial_state: &[usize]) {
     println!("initial_state: {:?}", initial_state);
     println!("# VEREDICT #");
 
+    println!("Total nodes created: {}", nodes_created);
     if found {
-        println!("Total nodes created: {}", nodes_created);
         println!("Valid 8-Queens solution found:");
         print_board(&solution);
     } else {
         println!("No solution found.");
-        println!("Total nodes created: {}", nodes_created);
     }
 }
 
 fn main() {
     // NOTE: Each element in the array represents a ROW.
     // NOTE: The number represents a COLUMN.
-    eight_queens(&[]); // no queens
-    eight_queens(&[4]); // one queen (0x4)
-    eight_queens(&[0, 5]); // two queens (0x0, 1x5)
-    eight_queens(&[1, 5, 7]); // three queens (0x1, 1x4, 2x7)
-    // eight_queens(&[1, 4, 7]); // three queens (1x1, 1x4, 2x7) NO SOLUTIONS
+    eight_queens(&[]);          // no queens
+    eight_queens(&[4]);         // one queen (0x4)
+    eight_queens(&[0, 5]);      // two queens (0x0, 1x5)
+    eight_queens(&[1, 5, 7]);   // three queens (0x1, 1x5, 2x7)
+    // eight_queens(&[1, 4, 7]);   // three queens (1x1, 1x4, 2x7) NO SOLUTIONS
 }
