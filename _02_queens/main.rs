@@ -53,12 +53,6 @@ fn eight_queens(initial_state: &[usize]) {
         nodes_created += 1;
         let row = state.len();
 
-        if row == BOARD_SIZE {
-            found = true;
-            solution = state.to_vec();
-            break; // found one solution
-        }
-
         // NOTE: reverse for left-to-right
         for col in (0..BOARD_SIZE).rev() {
             if is_safe(state.as_slice(), row, col) {
@@ -66,6 +60,12 @@ fn eight_queens(initial_state: &[usize]) {
                 new_state.push(col);
                 stack.push(new_state);
             }
+        }
+
+        if row == BOARD_SIZE {
+            found = true;
+            solution = state.to_vec();
+            break; // found one solution
         }
     }
 
