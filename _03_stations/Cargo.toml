@@ -1,0 +1,10 @@
+[package]
+name = "_03_stations"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+[[bin]]
+name = "_03_stations"
+path = "main.rs"
