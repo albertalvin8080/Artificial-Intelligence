@@ -3,20 +3,7 @@ use std::collections::{BinaryHeap, HashMap};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Station {
-    E1 = 1,
-    E2,
-    E3,
-    E4,
-    E5,
-    E6,
-    E7,
-    E8,
-    E9,
-    E10,
-    E11,
-    E12,
-    E13,
-    E14,
+    E1 = 1, E2, E3, E4, E5, E6, E7, E8, E9, E10, E11, E12, E13, E14,
 }
 
 impl Station {
