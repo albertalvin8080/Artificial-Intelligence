@@ -257,6 +257,7 @@ impl SubwayNetwork {
                 };
 
                 let tentative = cur_state.g + travel + change;
+
                 let next_key: StationAndLineName = (edge.to, Some(edge.line_name));
 
                 if tentative < *gscores.get(&next_key).unwrap_or(&f64::INFINITY) {

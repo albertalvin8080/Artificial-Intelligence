@@ -4,8 +4,8 @@ use std::io;
 use distances::*;
 
 fn main() {
-    // manual();
-    matrix();
+    manual();
+    // matrix();
 }
 
 fn matrix() {
@@ -22,7 +22,7 @@ fn matrix() {
     }
     println!();
 
-    let mut paths: Vec<Vec<(Station, &'static str)>> = Vec::new();
+    // let mut paths: Vec<Vec<(Station, &'static str)>> = Vec::new();
 
     for start in station_names.iter() {
         print!("{:>5} ", start);
@@ -32,7 +32,7 @@ fn matrix() {
                 network.astar(start.parse().unwrap(), goal.parse().unwrap())
             {
                 print!("{:>6.1} ", time);
-                paths.push(_path);
+                // paths.push(_path);
             } else {
                 print!("{:>6} ", "N/A");
             }
@@ -56,6 +56,7 @@ fn matrix() {
 fn manual() {
     let network = SubwayNetwork::new();
 
+    println!();
     let (start, goal) = ask_input();
 
     if let Some((path, time)) = network.astar(start, goal) {
