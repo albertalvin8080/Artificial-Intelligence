@@ -260,6 +260,7 @@ impl SubwayNetwork {
 
                 let next_key: StationAndLineName = (edge.to, Some(edge.line_name));
 
+                // poda de subótimos
                 if tentative < *gscores.get(&next_key).unwrap_or(&f64::INFINITY) {
                     let prev_key: StationAndLineName = (cur_state.station, cur_state.line_name);
                     backtracking_map.insert(next_key, prev_key);
