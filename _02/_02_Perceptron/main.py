@@ -7,15 +7,16 @@ data = pd.read_csv(r'C:\Users\a.bandeira.sobral\Documents\_git_repositories\Arti
 X = data.iloc[:, :2].to_numpy()
 y = data.iloc[:, 2].to_numpy()
 
-# Convertendo rótulos: 1 -> 0 e 2 -> 1
+# Labels: 1 -> 0 e 2 -> 1
 y = np.where(y == 1, 0, 1)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
-# bias (x0 = 1)
+# bias (w0 = 1)
 def add_bias(X):
     return np.insert(X, 0, 1, axis=1)
 
+# '1' as the first feature in every input vector
 X_train_bias = add_bias(X_train)
 X_test_bias = add_bias(X_test)
 
