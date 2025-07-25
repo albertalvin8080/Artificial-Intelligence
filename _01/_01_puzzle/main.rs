@@ -51,8 +51,10 @@ fn puzzle(initial_state: &[u8], goal_state: &[u8]) {
 
     let mut outer_node: Option<Vec<u8>> = None;
     let mut outer_moves: usize = 0;
+    let mut c = 0;
 
     while let Some((node, moves)) = queue.pop_front() {
+        c += 1;
         if found { break; }
         if visited.contains(&node) { continue; }
 
@@ -79,6 +81,7 @@ fn puzzle(initial_state: &[u8], goal_state: &[u8]) {
         println!("initial_state: {:?}", initial_state);
         println!("# VERDICT #");
         println!("No solutions");
+        println!("Number of nodes visited: {}", c);
     }
 }
 

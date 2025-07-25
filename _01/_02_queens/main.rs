@@ -2,6 +2,7 @@ const BOARD_SIZE: usize = 8;
 
 /// Checks if the current tile (row, col) is not attacked by any other queen inside `state`.
 fn is_safe(state: &[usize], row: usize, col: usize) -> bool {
+    // exclusive
     for r in 0..row {
         let c = state[r];
         // >> if the cols are the same
@@ -47,7 +48,7 @@ fn eight_queens(initial_state: &[usize]) {
     let mut stack = vec![initial_state.to_vec()];
     let mut nodes_created = 0;
 
-    let mut solution = Vec::new();
+    let mut solution: Vec<Vec<usize>> = Vec::new();
 
     while let Some(state) = stack.pop() {
         nodes_created += 1;
@@ -64,7 +65,7 @@ fn eight_queens(initial_state: &[usize]) {
 
         if row == BOARD_SIZE {
             found = true;
-            solution = state.to_vec();
+            solution.push(state.clone());
             break; // found one solution
         }
     }
@@ -76,7 +77,7 @@ fn eight_queens(initial_state: &[usize]) {
     println!("Total nodes created: {}", nodes_created);
     if found {
         println!("Valid 8-Queens solution found:");
-        print_board(&solution);
+        print_board(solution[0].as_slice());
     } else {
         println!("No solution found.");
     }
