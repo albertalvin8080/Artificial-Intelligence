@@ -1,6 +1,6 @@
 const BOARD_SIZE: usize = 8;
 
-/// Checks if the current tile (row, col) is not attacked by any other queen inside `state`.
+// Checks if the current tile (row, col) is not attacked by any other queen inside `state`.
 fn is_safe(state: &[usize], row: usize, col: usize) -> bool {
     // exclusive
     for r in 0..row {
@@ -77,6 +77,7 @@ fn eight_queens(initial_state: &[usize]) {
     println!("Total nodes created: {}", nodes_created);
     if found {
         println!("Valid 8-Queens solution found:");
+        println!("{:?}", solution);
         print_board(solution[0].as_slice());
     } else {
         println!("No solution found.");

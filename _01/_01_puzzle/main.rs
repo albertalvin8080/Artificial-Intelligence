@@ -76,6 +76,7 @@ fn puzzle(initial_state: &[u8], goal_state: &[u8]) {
         println!("Goal state found:");
         println!("{:?}", outer_node);
         println!("Number of moves: {}", outer_moves);
+        println!("Number of nodes visited: {}", c);
     } else {
         println!("{}", "-".repeat(42));
         println!("initial_state: {:?}", initial_state);
