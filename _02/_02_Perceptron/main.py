@@ -22,15 +22,21 @@ X_test_bias = add_bias(X_test)
 
 class Perceptron:
     def __init__(self, lr=0.01, n_iter=1000, initial_weights=None):
+        print(lr)
         self.lr = lr
         self.n_iter = n_iter
         self.initial_weights = initial_weights
-        self.weights = initial_weights if initial_weights is not None else np.zeros(X.shape[1])
+        self.weights = None
         
     def activation(self, z):
         return np.where(z >= 0, 1, 0)
 
     def fit(self, X, y):
+        if self.initial_weights is not None:
+            self.weights = self.initial_weights
+        else:
+            self.weights = np.zeros(X.shape[1])
+        print(self.weights)
         for _ in range(self.n_iter):
             for xi, target in zip(X, y):
                 z = np.dot(xi, self.weights)
@@ -43,13 +49,27 @@ class Perceptron:
 
 
 def plot_decision_boundary(X, y, model):
+        # Define the range for the x-axis (feature 1), with a margin of -1 and +1
         x_min, x_max = X[:,1].min() - 1, X[:,1].max() + 1
+        
+        # Define the range for the y-axis (feature 2), with a margin of -1 and +1
         y_min, y_max = X[:,2].min() - 1, X[:,2].max() + 1
+        
+        # Create a grid of points covering the feature space (100 steps in each axis)
         xx, yy = np.meshgrid(np.linspace(x_min, x_max, 100),
-                            np.linspace(y_min, y_max, 100))
+                             np.linspace(y_min, y_max, 100))
+        
+        # Flatten the grid and add a column of ones for the bias term
+        # This results in a matrix of shape (number_of_points, 3) -> [bias, x, y]
         grid = np.c_[np.ones(xx.ravel().shape), xx.ravel(), yy.ravel()]
+        
+        # Use the trained model to predict labels for every point in the grid
         preds = model.predict(grid).reshape(xx.shape)
+        
+        # Plot the decision boundary by coloring regions based on predicted class
         plt.contourf(xx, yy, preds, alpha=0.3, cmap='bwr')
+        
+        # Plot the actual data points, coloring them by their true labels
         plt.scatter(X[:,1], X[:,2], c=y, cmap='bwr', edgecolors='k')
         plt.title("Perceptron - Fronteira de Decisão")                                      
         plt.xlabel("Característica 1")
