@@ -3,7 +3,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 
-data = pd.read_csv(r'C:\Users\a.bandeira.sobral\Documents\_git_repositories\Artificial-Inteligence\_02\_02_Perceptron\perceptron.txt', sep=';', header=None)
+data = pd.read_csv(
+    r'C:\Users\a.bandeira.sobral\Documents\_git_repositories\Artificial-Inteligence\_02\_02_Perceptron\perceptron.txt', 
+    sep=';', 
+    header=None
+)
 X = data.iloc[:, :2].to_numpy()
 y = data.iloc[:, 2].to_numpy()
 
@@ -21,8 +25,9 @@ X_train_bias = add_bias(X_train)
 X_test_bias = add_bias(X_test)
 
 class Perceptron:
-    def __init__(self, lr=0.01, n_iter=1000, initial_weights=None):
-        print(lr)
+    def __init__(self, lr=0.01, n_iter=1, initial_weights=None):
+        print(f"Initial LR: {lr}")
+        print(f"Total Iterations: {n_iter}")
         self.lr = lr
         self.n_iter = n_iter
         self.initial_weights = initial_weights
@@ -36,7 +41,7 @@ class Perceptron:
             self.weights = self.initial_weights
         else:
             self.weights = np.zeros(X.shape[1])
-        print(self.weights)
+        print(f"Initial weights: {self.weights}")
         for _ in range(self.n_iter):
             for xi, target in zip(X, y):
                 z = np.dot(xi, self.weights)
@@ -79,7 +84,7 @@ def plot_decision_boundary(X, y, model):
         
 
 if __name__ == "__main__":
-    perceptron = Perceptron(lr=0.01, n_iter=1)
+    perceptron = Perceptron(lr=0.01, n_iter=2)
     perceptron.fit(X_train_bias, y_train)
     
     y_pred = perceptron.predict(X_test_bias)
