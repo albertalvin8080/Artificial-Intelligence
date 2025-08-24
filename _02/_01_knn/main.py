@@ -4,7 +4,9 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
-df = pd.read_csv('breast_cancer_wisconsin.csv')
+df = pd.read_csv(r"C:\Users\a.bandeira.sobral\Documents\_git_repositories\Artificial-Inteligence\_02\_01_knn\breast_cancer_wisconsin.csv")
+print(df.shape)
+print(df.head())
 
 df = df.drop(columns=['id'], errors='ignore')
 
